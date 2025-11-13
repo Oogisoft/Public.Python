@@ -1,6 +1,6 @@
 Hello World
 This is an app I learned how to make doing coursework for Python.
-I have taken the concept and made it into a package that can be distributed to my friends, family and collegues.
+I have taken the concept and made it into a package that can be distributed to my friends, family and colleagues.
 
 Why is this good?
 If you have ever had to do massive amounts of data transfer for your job. (ala Copy and Paste)
