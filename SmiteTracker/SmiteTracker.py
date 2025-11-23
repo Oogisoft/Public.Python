@@ -64,6 +64,8 @@ with sync_playwright() as pw:
     
     browser.close()
 
+
+#Discord execution is below, mute for testing
 webhook = DiscordWebhook(url=webhook_url, content= cur_rank + ' and ' 
                          + last_ranked + ' and ' + todays_WL)
 
