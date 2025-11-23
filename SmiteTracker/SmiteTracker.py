@@ -1,8 +1,13 @@
 #track erics smite progress
 
 from playwright.sync_api import sync_playwright
+from discord_webhook import DiscordWebhook
 
 smite_profile = 'https://tracker.gg/smite2/profile/psn/Pearadoxx'
+webhook_url = 'https://discord.com/api/webhooks/1204479951911264327/GvJ2P5oPcQ9ubZuzm3w9L9O5VeKRKMIrd0iqkSAcISEVMM0W94VezJb7bdKyjbXBgD_O'
+
+
+
 
 with sync_playwright() as pw:
 
@@ -15,8 +20,8 @@ with sync_playwright() as pw:
 
     context = browser.new_context(
         user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-                   "AppleWebKit/537.36 (KHTML, like Gecko) "
-                   "Chrome/120.0.0.0 Safari/537.36",
+                    "AppleWebKit/537.36 (KHTML, like Gecko) "
+                    "Chrome/120.0.0.0 Safari/537.36",
         viewport={"width": 1280, "height": 800},
         locale="en-US",
         timezone_id="America/Chicago"
@@ -25,7 +30,7 @@ with sync_playwright() as pw:
     # Spoof navigator.webdriver
     context.add_init_script("""
         Object.defineProperty(navigator, 'webdriver', {
-          get: () => undefined
+            get: () => undefined
         });
     """)
 
@@ -43,7 +48,15 @@ with sync_playwright() as pw:
     # Extract rank alt text
     rank = page.locator("img.image.object-contain").first.get_attribute("alt")
     last_rank_game = page.locator('div.text-18.font-bold.text-secondary').first.text_content()
-    print("Eric is currently Rank:", rank)
-    print("The last time Eric played Ranked:", last_rank_game)
-
+    cur_rank = "Eric is currently Rank: " + str(rank)
+    last_ranked = "the last time Eric played Ranked was " + str(last_rank_game)
     browser.close()
+
+webhook = DiscordWebhook(url=webhook_url, content= cur_rank + ' and ' + last_ranked)
+
+response = webhook.execute()
+
+if response.status_code == 204:
+    print('succesfully ran')
+else:
+    print(f'I failed somewhere, check this, {response.status_code}, Response: {response.text}')
