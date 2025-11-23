@@ -49,7 +49,7 @@ with sync_playwright() as pw:
     rank = page.locator("img.image.object-contain").first.get_attribute("alt")
     last_rank_game = page.locator('div.text-18.font-bold.text-secondary').first.text_content()
     # Extract win loss text
-
+    #need to load new page for this data
     page.goto('https://tracker.gg/smite2/profile/psn/Pearadoxx/overview?gamemode=conquest&season=3', wait_until="domcontentloaded")
     wins = page.locator("span.value.text-green.truncate").first.text_content()
     losses = page.locator("span.value.text-red.truncate").first.text_content()
@@ -58,7 +58,7 @@ with sync_playwright() as pw:
     #phrase creation for message to discord
     cur_rank = f"<@{eric_id}> Eric is currently Rank: " + str(rank)
     last_ranked = "the last time Eric played Ranked was " + str(last_rank_game)
-    todays_WL = f'His record for today is {wins + losses}'
+    todays_WL = f'His record for today is {wins} {losses}'
     
     
     
