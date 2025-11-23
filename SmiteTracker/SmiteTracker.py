@@ -5,7 +5,7 @@ from discord_webhook import DiscordWebhook
 
 smite_profile = 'https://tracker.gg/smite2/profile/psn/Pearadoxx'
 webhook_url = 'https://discord.com/api/webhooks/1204479951911264327/GvJ2P5oPcQ9ubZuzm3w9L9O5VeKRKMIrd0iqkSAcISEVMM0W94VezJb7bdKyjbXBgD_O'
-
+eric_id = '472887827139526656'
 
 
 
@@ -48,7 +48,7 @@ with sync_playwright() as pw:
     # Extract rank alt text
     rank = page.locator("img.image.object-contain").first.get_attribute("alt")
     last_rank_game = page.locator('div.text-18.font-bold.text-secondary').first.text_content()
-    cur_rank = "Eric is currently Rank: " + str(rank)
+    cur_rank = f"<@{eric_id}> Eric is currently Rank: " + str(rank)
     last_ranked = "the last time Eric played Ranked was " + str(last_rank_game)
     browser.close()
 
