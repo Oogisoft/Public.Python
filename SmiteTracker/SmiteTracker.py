@@ -4,7 +4,8 @@ from playwright.sync_api import sync_playwright
 from discord_webhook import DiscordWebhook
 from pathlib import Path
 
-disc_webhooks = Path.home() / 'home' / 'scripts'
+disc_webhooks = Path.home() / 'home' / 'scripts' / 'Discord_webhooks.txt'
+
 
 
 
