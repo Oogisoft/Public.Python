@@ -2,10 +2,17 @@
 
 from playwright.sync_api import sync_playwright
 from discord_webhook import DiscordWebhook
+from pathlib import Path
+
+disc_webhooks = Path.home() / 'home' / 'scripts'
+
+
 
 smite_rank = 'https://tracker.gg/smite2/profile/psn/Pearadoxx/overview?gamemode=conquest-ranked&season=3'
 smite_casual = 'https://tracker.gg/smite2/profile/psn/Pearadoxx/overview?gamemode=conquest&season=3'
-webhook_url = 'https://discord.com/api/webhooks/1204479951911264327/GvJ2P5oPcQ9ubZuzm3w9L9O5VeKRKMIrd0iqkSAcISEVMM0W94VezJb7bdKyjbXBgD_O'
+
+
+
 eric_id = '472887827139526656'
 
 #fun phrases to randomize message
@@ -67,17 +74,17 @@ with sync_playwright() as pw:
     
     
     browser.close()
-phrase1 = f'<@a_friend> is rank {cur_rank} but hasn\'t played ranked since {last_rank_game}'
+phrase1 = f'<@{eric_id}> is rank {cur_rank} but hasn\'t played ranked since {last_rank_game}'
 phrase2 = f'Eric\'s ranked W/L is {todays_rank_WL}'
 phrase3 = f'Eric\'s casual W/L is {todays_cas_WL}'
-print(f'<@a_friend> is rank {cur_rank} but hasn\'t played ranked since {last_rank_game}')
+print(f'<@{eric_id}> is rank {cur_rank} but hasn\'t played ranked since {last_rank_game}')
 print(f'Eric\'s ranked W/L is {todays_rank_WL}')
 print(f'Eric\'s casual W/L is {todays_cas_WL}')
 #Discord execution is below, mute for testing
 webhook1 = DiscordWebhook(url=webhook_url, content=f"""{phrase1} \n {phrase2} \n {phrase3}""")
 
 response = webhook1.execute()
-if response.status_code == 204:
+if response.status_code == 204 or 200:
     print('succesfully ran')
 else:
     print(f'I failed somewhere, check this, {response.status_code}, Response: {response.text}')
