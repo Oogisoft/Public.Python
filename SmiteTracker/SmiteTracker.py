@@ -82,11 +82,11 @@ print(f'<@{eric_id}> is rank {cur_rank} but hasn\'t played ranked since {last_ra
 print(f'Eric\'s ranked W/L is {todays_rank_WL}')
 print(f'Eric\'s casual W/L is {todays_cas_WL}')
 #Discord execution is below, mute for testing
-webhook1 = DiscordWebhook(url=webhook_url, content=f"""{phrase1} \n {phrase2} \n {phrase3}""")
-
-response = webhook1.execute()
-if response.status_code == 204 or 200:
-    print('succesfully ran')
-else:
-    print(f'I failed somewhere, check this, {response.status_code}, Response: {response.text}')
+#webhook1 = DiscordWebhook(url=webhook_url, content=f"""{phrase1} \n {phrase2} \n {phrase3}""")
+#
+#response = webhook1.execute()
+#if response.status_code == 204 or 200:
+#    print('succesfully ran')
+#else:
+#    print(f'I failed somewhere, check this, {response.status_code}, Response: {response.text}')
 
