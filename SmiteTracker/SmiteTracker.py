@@ -4,9 +4,11 @@ from playwright.sync_api import sync_playwright
 from discord_webhook import DiscordWebhook
 from pathlib import Path
 
-disc_webhooks = Path.home() / 'home' / 'scripts' / 'Discord_webhooks.txt'
+disc_webhooks = open(Path.home() / 'home' / 'scripts' / 'Discord_webhooks.txt', encoding='UTF-8')
 
-
+webhook_urls = disc_webhooks.readlines()
+SBF_chat = webhook_urls[1]
+Test_chat = webhook_urls[3]
 
 
 smite_rank = 'https://tracker.gg/smite2/profile/psn/Pearadoxx/overview?gamemode=conquest-ranked&season=3'
@@ -82,11 +84,10 @@ print(f'<@{eric_id}> is rank {cur_rank} but hasn\'t played ranked since {last_ra
 print(f'Eric\'s ranked W/L is {todays_rank_WL}')
 print(f'Eric\'s casual W/L is {todays_cas_WL}')
 #Discord execution is below, mute for testing
-#webhook1 = DiscordWebhook(url=webhook_url, content=f"""{phrase1} \n {phrase2} \n {phrase3}""")
-#
-#response = webhook1.execute()
-#if response.status_code == 204 or 200:
-#    print('succesfully ran')
-#else:
-#    print(f'I failed somewhere, check this, {response.status_code}, Response: {response.text}')
+webhook1 = DiscordWebhook(url=SBF_chat[:-1], content=f"""{phrase1} \n {phrase2} \n {phrase3}""")
 
+response = webhook1.execute()
+if response.status_code == 204 or 200:
+    print('succesfully ran')
+else:
+    print(f'I failed somewhere, check this, {response.status_code}, Response: {response.text}')
