@@ -1,26 +1,31 @@
-Hello World
-This is an app I learned how to make doing coursework for Python.
-I have taken the concept and made it into a package that can be distributed to my friends, family and colleagues.
+ClipRec: Automated Clipboard Batch Recorder
+ClipRec is a lightweight Python utility designed to streamline high-volume data collection. By monitoring the system clipboard in real-time, it eliminates the "copy-paste-switch" cycle, allowing users to gather information through continuous copying.
 
-Why is this good?
-If you have ever had to do massive amounts of data transfer for your job. (ala Copy and Paste)
-This app would save you tons of time simply by removing the need to Paste the contents after you Copied them. 
+💼 Business Case: Workflow Optimization & Data Entry
+In data-heavy roles—such as Market Research, Legal Discovery, or Lead Generation—the constant switching between a browser and a spreadsheet is a "hidden" time-killer known as Context Switching.
 
-How normal data transfer might look:
-1. Select-drag or right click hyperlink in a browser/file
-2. Ctrl-C or right click to copy data to clipboard
-3. Switch to textfile or spreadsheet where you are saving this data 
-4. Ctrl-v or right click to paste 
-5. Switch back to browser 
+Example Scenario: Market Research Specialist A researcher needs to collect 50 project URLs from a search results page.
 
-How cliprec.py helps you transfer data easier:
-1. Select-drag or right click hyperlink in a browser/file
-2. Ctrl-C or right click to copy data to clipboard
+Traditional Method: 250 manual actions (Copy, Alt-Tab, Paste, Alt-Tab, Repeat). This creates a high risk of "double-copying" or missing entries due to fatigue.
 
-Summary
-This app simply records what you are copying on your computer. Without you having to manually save it somewhere. 
-Just keep working on your task and this app will save you some time in the long run.
+The ClipRec Method: 50 manual actions (Copy, Copy, Copy...). The user stays focused on the source material without ever leaving the browser.
 
-My Special Additions:
--Added a feature so that when the app is exited (Ctrl-C), all content saved thus far is added to your clipboard.
--Instructions on the app and its use are done by me.
+The Result: A 60–80% reduction in manual clicks and a significantly faster completion time, allowing the employee to focus on analyzing data rather than moving it.
+
+🛠 Features
+Background Monitoring: Passively listens to the system clipboard and logs new entries instantly.
+
+Duplicate Prevention: Intelligently handles clipboard data to ensure a clean list of unique entries.
+
+Auto-Consolidation on Exit: Upon closing the app (Ctrl+C), the program automatically aggregates all recorded snippets and places the entire collection back onto your clipboard for a single, final paste.
+
+User-Friendly CLI: Built-in instructions and clear feedback loop for non-technical users.
+
+The Exit Feature: I implemented a custom exit handler so that when you finish your research, you don't even have to open the text file. The program hands you the "bundle" of data as you leave, making the final transfer to your database or spreadsheet instantaneous.
+
+💻 Tech Stack
+Language: Python 3.x
+
+Key Modules: pyperclip for clipboard interaction and signal/time for process handling.
+
+Distribution: Packaged for easy distribution to non-developers.

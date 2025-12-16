@@ -1,0 +1,1 @@
+The majority of these are my apps written for fun and to learn the discord libraries
