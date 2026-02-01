@@ -77,16 +77,28 @@ with sync_playwright() as pw:
     
     
     browser.close()
-phrase1 = f'<@{eric_id}> is rank {cur_rank} but hasn\'t played ranked since {last_rank_game}'
-phrase2 = f'Eric\'s ranked W/L is {todays_rank_WL}'
-phrase3 = f'Eric\'s casual W/L is {todays_cas_WL}'
-print(f'<@{eric_id}> is rank {cur_rank} but hasn\'t played ranked since {last_rank_game}')
-print(f'Eric\'s ranked W/L is {todays_rank_WL}')
-print(f'Eric\'s casual W/L is {todays_cas_WL}')
-#Discord execution is below, mute for testing
-webhook1 = DiscordWebhook(url=SBF_chat[:-1], content=f"""{phrase1} \n {phrase2} \n {phrase3}""")
 
-response = webhook1.execute()
+phrase0 = f'I am Smite-Bot, here to support you <@{eric_id}>.'
+#phrase1 = f'<@{eric_id}> is rank {cur_rank} but hasn\'t played ranked since {last_rank_game}'
+#phrase2 = f'Eric\'s ranked W/L is {todays_rank_WL}'
+#phrase3 = f'Eric\'s casual W/L is {todays_cas_WL}'
+#print(f'<@{eric_id}> is rank {cur_rank} but hasn\'t played ranked since {last_rank_game}')
+#print(f'Eric\'s ranked W/L is {todays_rank_WL}')
+#print(f'Eric\'s casual W/L is {todays_cas_WL}')
+#Discord execution is below, mute for testing
+
+webhook0 = DiscordWebhook(url=SBF_chat[:-1], content=f'''{phrase0},\n
+                          
+When an enemy is missing in the lane, it is customary to announce this by yelling:
+
+“MISSING! MISSING! THEY’VE GONE OFF! THEY COULD BE ANYWHERE. THEY COULD BE IN YOUR LANE, DEREK!”
+
+Do not rotate too early.
+Do not rotate too late.
+Rotate just late enough for everyone to yell at you.''')
+#webhook1 = DiscordWebhook(url=SBF_chat[:-1], content=f"""{phrase1} \n {phrase2} \n {phrase3}""")
+
+response = webhook0.execute()
 if response.status_code == 204 or 200:
     print('succesfully ran')
 else:
